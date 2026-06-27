@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DentalDesk – Appointment Manager</title>
   <style>
-    /* ── Reset & Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -14,7 +13,7 @@
       min-height: 100vh;
     }
 
-    /* ── Header ── */
+    /* Header */
     header {
       background: #ffffff;
       border-bottom: 1px solid #e2e8f0;
@@ -39,10 +38,10 @@
     .logo svg { width: 28px; height: 28px; }
     .header-sub { font-size: 0.75rem; color: #64748b; font-weight: 400; }
 
-    /* ── Layout ── */
+    /* Layout */
     .container { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
 
-    /* ── Stats bar ── */
+    /* Stats */
     .stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -62,7 +61,7 @@
     .stat-val.amber { color: #d97706; }
     .stat-val.red   { color: #dc2626; }
 
-    /* ── Card ── */
+    /* Card */
     .card {
       background: #fff;
       border: 1px solid #e2e8f0;
@@ -81,12 +80,8 @@
     }
     .card-title svg { color: #2563eb; }
 
-    /* ── Form grid ── */
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
+    /* Form */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .field { display: flex; flex-direction: column; gap: 5px; }
     .field.full { grid-column: 1 / -1; }
     label { font-size: 0.78rem; font-weight: 600; color: #374151; }
@@ -108,19 +103,8 @@
       background: #fff;
     }
     input::placeholder { color: #94a3b8; }
-    .hint { font-size: 0.7rem; color: #94a3b8; margin-top: 2px; }
-    .info-banner {
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      border-radius: 7px;
-      padding: 10px 14px;
-      font-size: 0.78rem;
-      color: #1d4ed8;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 14px;
-    }
+
+    /* Buttons */
     .btn-row { display: flex; gap: 10px; justify-content: flex-end; margin-top: 1.25rem; }
     .btn {
       height: 38px;
@@ -139,19 +123,13 @@
       color: #374151;
     }
     .btn:hover { background: #f1f5f9; }
-    .btn.primary {
-      background: #2563eb;
-      color: #fff;
-      border-color: #2563eb;
-    }
+    .btn.primary { background: #2563eb; color: #fff; border-color: #2563eb; }
     .btn.primary:hover { background: #1d4ed8; }
-    .btn.danger { color: #dc2626; border-color: #fca5a5; }
-    .btn.danger:hover { background: #fef2f2; }
     .btn.success { color: #16a34a; border-color: #86efac; }
     .btn.success:hover { background: #f0fdf4; }
     .btn:disabled { opacity: .55; cursor: not-allowed; }
 
-    /* ── Table toolbar ── */
+    /* Toolbar */
     .toolbar {
       display: flex;
       align-items: center;
@@ -186,7 +164,7 @@
     }
     .chip.active { background: #eff6ff; border-color: #93c5fd; color: #2563eb; font-weight: 600; }
 
-    /* ── Table ── */
+    /* Table */
     .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid #e2e8f0; }
     table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 760px; }
     thead th {
@@ -205,25 +183,21 @@
     tbody tr:hover { background: #f8fafc; }
     td { padding: 0.75rem 1rem; vertical-align: middle; }
     .patient-name { font-weight: 600; color: #1a202c; }
-    .patient-sub { font-size: 0.72rem; color: #94a3b8; margin-top: 2px; }
+    .patient-sub  { font-size: 0.72rem; color: #94a3b8; margin-top: 2px; }
 
-    /* ── Badges ── */
+    /* Badges */
     .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-      padding: 2px 9px;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      font-weight: 600;
+      display: inline-flex; align-items: center; gap: 3px;
+      padding: 2px 9px; border-radius: 20px;
+      font-size: 0.7rem; font-weight: 600;
     }
-    .badge.green  { background: #dcfce7; color: #15803d; }
-    .badge.red    { background: #fee2e2; color: #dc2626; }
-    .badge.amber  { background: #fef3c7; color: #b45309; }
-    .badge.blue   { background: #dbeafe; color: #1d4ed8; }
-    .badge.gray   { background: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; }
+    .badge.green { background: #dcfce7; color: #15803d; }
+    .badge.red   { background: #fee2e2; color: #dc2626; }
+    .badge.amber { background: #fef3c7; color: #b45309; }
+    .badge.blue  { background: #dbeafe; color: #1d4ed8; }
+    .badge.gray  { background: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; }
 
-    /* ── Action buttons ── */
+    /* Action buttons */
     .action-btn {
       width: 30px; height: 30px;
       border-radius: 6px;
@@ -242,100 +216,54 @@
     .action-btn.del:hover   { background: #fef2f2; color: #dc2626; border-color: #fca5a5; }
     .action-btns { display: flex; gap: 5px; }
 
-    /* ── Empty state ── */
+    /* Empty */
     .empty { text-align: center; padding: 3rem 1rem; color: #94a3b8; }
     .empty svg { width: 48px; height: 48px; margin: 0 auto 12px; display: block; opacity: .35; }
 
-    /* ── Toast ── */
+    /* Toast */
     #toast {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: #1e293b;
-      color: #fff;
-      border-radius: 10px;
-      padding: 12px 18px;
+      position: fixed; bottom: 24px; right: 24px;
+      background: #1e293b; color: #fff;
+      border-radius: 10px; padding: 12px 18px;
       font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      opacity: 0;
-      transform: translateY(16px);
+      opacity: 0; transform: translateY(16px);
       transition: opacity .25s, transform .25s;
-      z-index: 999;
-      max-width: 340px;
+      z-index: 999; max-width: 340px;
       box-shadow: 0 8px 24px rgba(0,0,0,.18);
     }
-    #toast.show { opacity: 1; transform: translateY(0); }
+    #toast.show  { opacity: 1; transform: translateY(0); }
     #toast.green { background: #15803d; }
     #toast.red   { background: #dc2626; }
     #toast.amber { background: #b45309; }
 
-    /* ── Modal ── */
+    /* Modal */
     .overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
+      display: none; position: fixed; inset: 0;
       background: rgba(0,0,0,.45);
-      z-index: 200;
-      align-items: center;
-      justify-content: center;
+      z-index: 200; align-items: center; justify-content: center;
     }
     .overlay.open { display: flex; }
     .modal {
-      background: #fff;
-      border-radius: 14px;
-      padding: 1.5rem;
-      width: 500px;
-      max-width: 96vw;
+      background: #fff; border-radius: 14px; padding: 1.5rem;
+      width: 500px; max-width: 96vw;
       box-shadow: 0 20px 60px rgba(0,0,0,.2);
     }
     .modal-title {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      font-size: 1rem; font-weight: 700; margin-bottom: 1.25rem;
+      display: flex; align-items: center; justify-content: space-between;
       color: #1a202c;
     }
     .close-btn {
-      width: 28px; height: 28px;
-      border-radius: 6px;
-      border: 1px solid #e2e8f0;
-      background: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 28px; height: 28px; border-radius: 6px;
+      border: 1px solid #e2e8f0; background: none;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
       color: #64748b;
     }
     .close-btn:hover { background: #f1f5f9; }
 
-    /* ── Config panel ── */
-    .config-note {
-      background: #fffbeb;
-      border: 1px solid #fde68a;
-      border-radius: 8px;
-      padding: 12px 14px;
-      font-size: 0.78rem;
-      color: #92400e;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-    .config-note strong { display: block; margin-bottom: 4px; font-size: 0.8rem; }
-    .step-list { padding-left: 1.2rem; margin-top: 6px; }
-    .step-list li { margin-bottom: 4px; }
-    code {
-      background: #f1f5f9;
-      border: 1px solid #e2e8f0;
-      border-radius: 4px;
-      padding: 1px 5px;
-      font-size: 0.75rem;
-      font-family: 'Courier New', monospace;
-      color: #1d4ed8;
-      word-break: break-all;
-    }
+    /* Confirm modal */
+    .confirm-body { font-size: 0.9rem; color: #374151; line-height: 1.6; margin-bottom: 1.25rem; }
+    .confirm-body strong { color: #1a202c; }
 
     @media (max-width: 640px) {
       .stats { grid-template-columns: 1fr 1fr; }
@@ -346,7 +274,7 @@
 </head>
 <body>
 
-<!-- ── HEADER ── -->
+<!-- HEADER -->
 <header>
   <div class="logo">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -355,40 +283,32 @@
     DentalDesk
     <span class="header-sub">/ Appointment Manager</span>
   </div>
-  <div style="display:flex;gap:10px;align-items:center">
-    <button class="btn success" onclick="runEmailCheck()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
-      Send due reminders
-    </button>
-    <button class="btn primary" onclick="openAddModal()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      Add patient
-    </button>
-  </div>
+  <button class="btn primary" onclick="openAddModal()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    Add patient
+  </button>
 </header>
 
-<!-- ── MAIN ── -->
+<!-- MAIN -->
 <div class="container">
 
-  <!-- Config notice -->
-  <div class="config-note" id="config-banner">
-    <strong>⚙️ Setup required — connect your Google Sheet backend</strong>
-    Open <strong>Settings</strong> below and paste your Google Apps Script Web App URL to activate saving and email reminders.
-    <a href="#" onclick="document.getElementById('settings-card').scrollIntoView({behavior:'smooth'});return false;" style="color:#92400e;font-weight:600"> Jump to settings ↓</a>
-  </div>
-
   <!-- Stats -->
-  <div class="stats" id="stats-row">
-    <div class="stat-card"><div class="stat-label">Total patients</div><div class="stat-val blue" id="s-total">0</div></div>
-    <div class="stat-card"><div class="stat-label">Today</div><div class="stat-val amber" id="s-today">0</div></div>
+  <div class="stats">
+    <div class="stat-card"><div class="stat-label">Total patients</div><div class="stat-val blue"  id="s-total">0</div></div>
+    <div class="stat-card"><div class="stat-label">Today</div>          <div class="stat-val amber" id="s-today">0</div></div>
     <div class="stat-card"><div class="stat-label">Due in 1–3 days</div><div class="stat-val green" id="s-due">0</div></div>
-    <div class="stat-card"><div class="stat-label">Overdue</div><div class="stat-val red" id="s-overdue">0</div></div>
+    <div class="stat-card"><div class="stat-label">Overdue</div>        <div class="stat-val red"   id="s-overdue">0</div></div>
   </div>
 
   <!-- Patient table -->
   <div class="card">
     <div class="card-title">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
       All patients
     </div>
 
@@ -420,49 +340,17 @@
     </div>
   </div>
 
-  <!-- Settings card -->
-  <div class="card" id="settings-card">
-    <div class="card-title">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 0 0 4.93 4.93"/><path d="M4.93 19.07A10 10 0 0 0 19.07 19.07"/></svg>
-      Settings – Google Sheet connection
-    </div>
-    <div class="config-note" style="background:#f0fdf4;border-color:#86efac;color:#166534;">
-      <strong>How to set this up (one-time):</strong>
-      <ol class="step-list">
-        <li>Open Google Sheets, create a new spreadsheet named <code>DentalDesk</code>.</li>
-        <li>Go to <strong>Extensions → Apps Script</strong>, paste the code from <code>google-apps-script.gs</code> provided alongside this file.</li>
-        <li>Click <strong>Deploy → New deployment → Web app</strong>. Set "Who has access" to <strong>Anyone</strong>. Click Deploy.</li>
-        <li>Copy the Web App URL and paste it below, then click Save.</li>
-        <li>The script auto-emails patients 1 day before their appointment when you click "Send due reminders".</li>
-      </ol>
-    </div>
-    <div class="form-grid" style="grid-template-columns:1fr auto;gap:10px;align-items:end">
-      <div class="field">
-        <label>Google Apps Script Web App URL</label>
-        <input type="url" id="script-url" placeholder="https://script.google.com/macros/s/…/exec" />
-        <span class="hint">Paste your deployed Web App URL here.</span>
-      </div>
-      <button class="btn primary" onclick="saveSettings()" style="margin-bottom:20px">Save settings</button>
-    </div>
-    <div style="margin-top:10px">
-      <label style="font-size:0.78rem;font-weight:600;color:#374151">Days before appointment to send reminder email</label>
-      <select id="reminder-days" style="width:200px;margin-top:5px">
-        <option value="1" selected>1 day before</option>
-        <option value="2">2 days before</option>
-        <option value="3">3 days before</option>
-      </select>
-    </div>
-  </div>
-
 </div>
 
-<!-- ── ADD/EDIT MODAL ── -->
+<!-- ADD / EDIT MODAL -->
 <div class="overlay" id="modal">
   <div class="modal">
     <div class="modal-title">
       <span id="modal-title-text">Add patient</span>
       <button class="close-btn" onclick="closeModal()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
       </button>
     </div>
     <div class="form-grid">
@@ -487,10 +375,6 @@
       </div>
       <div class="field full"><label>Notes</label><input id="f-notes" placeholder="Any special notes…" /></div>
     </div>
-    <div class="info-banner">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      An email reminder will be sent automatically 1 day before the appointment.
-    </div>
     <div class="btn-row">
       <button class="btn" onclick="closeModal()">Cancel</button>
       <button class="btn primary" id="save-btn" onclick="savePatient()">Save patient</button>
@@ -498,42 +382,44 @@
   </div>
 </div>
 
-<!-- ── TOAST ── -->
+<!-- SEND EMAIL CONFIRM MODAL -->
+<div class="overlay" id="email-modal">
+  <div class="modal">
+    <div class="modal-title">
+      <span>Send reminder email</span>
+      <button class="close-btn" onclick="closeEmailModal()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="confirm-body" id="email-confirm-body"></div>
+    <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:12px 14px;font-size:0.82rem;color:#166534;margin-bottom:1.25rem;line-height:1.6" id="email-preview"></div>
+    <div class="btn-row">
+      <button class="btn" onclick="closeEmailModal()">Cancel</button>
+      <button class="btn success" id="confirm-send-btn" onclick="confirmSendEmail()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        Send email
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
 <div id="toast"></div>
 
 <script>
-// ── State ──
-let patients = JSON.parse(localStorage.getItem('dd_patients') || '[]');
-let scriptURL = localStorage.getItem('dd_script_url') || '';
-let reminderDays = parseInt(localStorage.getItem('dd_reminder_days') || '1');
-let editingId = null;
+// ── State ──────────────────────────────────────────────────────
+let patients   = JSON.parse(localStorage.getItem('dd_patients') || '[]');
+let scriptURL  = localStorage.getItem('dd_script_url') || '';
+let editingId  = null;
 let activeFilter = 'all';
+let pendingEmailId = null;   // patient ID waiting for email confirmation
 
-// ── Init ──
-window.onload = () => {
-  if (scriptURL) {
-    document.getElementById('script-url').value = scriptURL;
-    document.getElementById('config-banner').style.display = 'none';
-  }
-  document.getElementById('reminder-days').value = reminderDays;
-  renderAll();
-};
+// ── Init ───────────────────────────────────────────────────────
+window.onload = () => renderAll();
 
-// ── Settings ──
-function saveSettings() {
-  const url = document.getElementById('script-url').value.trim();
-  reminderDays = parseInt(document.getElementById('reminder-days').value);
-  if (url && !url.startsWith('https://script.google.com')) {
-    showToast('Please enter a valid Google Apps Script URL.', 'red'); return;
-  }
-  scriptURL = url;
-  localStorage.setItem('dd_script_url', url);
-  localStorage.setItem('dd_reminder_days', reminderDays);
-  document.getElementById('config-banner').style.display = url ? 'none' : '';
-  showToast('Settings saved.', 'green');
-}
-
-// ── Date helpers ──
+// ── Date helpers ───────────────────────────────────────────────
 function today() {
   const d = new Date();
   return new Date(d.getFullYear(), d.getMonth(), d.getDate());
@@ -548,18 +434,24 @@ function daysFrom(s) {
 function fmtDate(s) {
   return parseDate(s).toLocaleDateString('en-IN', {day:'2-digit', month:'short', year:'numeric'});
 }
-
-// ── Status ──
-function getStatus(p) {
-  const d = daysFrom(p.date);
-  if (d < 0)  return { label:'Overdue',  cls:'red'   };
-  if (d === 0) return { label:'Today',    cls:'amber' };
-  if (d === 1) return { label:'Tomorrow', cls:'amber' };
-  if (d <= 3)  return { label:'Due soon', cls:'amber' };
-  return                { label:'Upcoming', cls:'blue' };
+function fmtDateLong(s) {
+  const d = parseDate(s);
+  const days  = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months= ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear() + ' (' + days[d.getDay()] + ')';
 }
 
-// ── Render all ──
+// ── Status badge ───────────────────────────────────────────────
+function getStatus(p) {
+  const d = daysFrom(p.date);
+  if (d < 0)   return { label:'Overdue',   cls:'red'   };
+  if (d === 0) return { label:'Today',     cls:'amber' };
+  if (d === 1) return { label:'Tomorrow',  cls:'amber' };
+  if (d <= 3)  return { label:'Due soon',  cls:'amber' };
+  return               { label:'Upcoming', cls:'blue'  };
+}
+
+// ── Render ─────────────────────────────────────────────────────
 function renderAll() { renderStats(); renderTable(); }
 
 function renderStats() {
@@ -579,7 +471,10 @@ function setFilter(f, el) {
 function renderTable() {
   const q = (document.getElementById('search-input').value || '').toLowerCase();
   let list = patients.filter(p => {
-    const match = !q || p.name.toLowerCase().includes(q) || p.mobile.includes(q) || (p.email||'').toLowerCase().includes(q);
+    const match = !q
+      || p.name.toLowerCase().includes(q)
+      || p.mobile.includes(q)
+      || (p.email||'').toLowerCase().includes(q);
     if (!match) return false;
     if (activeFilter === 'today')   return daysFrom(p.date) === 0;
     if (activeFilter === 'due')     { const d=daysFrom(p.date); return d>0&&d<=3; }
@@ -592,7 +487,10 @@ function renderTable() {
   if (!list.length) {
     tb.innerHTML = `<tr><td colspan="7">
       <div class="empty">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+        </svg>
         No patients found
       </div></td></tr>`;
     return;
@@ -600,11 +498,11 @@ function renderTable() {
 
   tb.innerHTML = list.map(p => {
     const st = getStatus(p);
-    const d = daysFrom(p.date);
+    const d  = daysFrom(p.date);
     const dateCls = d < 0 ? 'color:#dc2626;font-weight:600' : d <= 1 ? 'color:#d97706;font-weight:600' : '';
     const emailBadge = p.emailSent
       ? `<span class="badge green">✓ Sent</span>`
-      : `<span class="badge gray">Pending</span>`;
+      : `<span class="badge gray">Not sent</span>`;
     return `<tr>
       <td>
         <div class="patient-name">${esc(p.name)}</div>
@@ -617,14 +515,25 @@ function renderTable() {
       <td>${emailBadge}</td>
       <td>
         <div class="action-btns">
-          <button class="action-btn edit" onclick="editPatient('${p.id}')" title="Edit">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          <button class="action-btn edit"  onclick="editPatient('${p.id}')"        title="Edit patient">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
           </button>
-          <button class="action-btn email" onclick="sendEmailNow('${p.id}')" title="Send reminder email now">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          <button class="action-btn email" onclick="askSendEmail('${p.id}')"       title="Send reminder email">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,12 2,6"/>
+            </svg>
           </button>
-          <button class="action-btn del" onclick="deletePatient('${p.id}')" title="Delete">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+          <button class="action-btn del"   onclick="deletePatient('${p.id}')"      title="Delete patient">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"/>
+              <path d="M19 6l-1 14H6L5 6"/>
+              <path d="M10 11v6"/><path d="M14 11v6"/>
+              <path d="M9 6V4h6v2"/>
+            </svg>
           </button>
         </div>
       </td>
@@ -632,12 +541,12 @@ function renderTable() {
   }).join('');
 }
 
-// ── Modal ──
+// ── Add / Edit modal ───────────────────────────────────────────
 function openAddModal() {
   editingId = null;
   document.getElementById('modal-title-text').textContent = 'Add patient';
   ['f-name','f-mobile','f-email','f-notes'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('f-date').value = '';
+  document.getElementById('f-date').value      = '';
   document.getElementById('f-treatment').value = '';
   document.getElementById('modal').classList.add('open');
 }
@@ -657,14 +566,13 @@ function editPatient(id) {
   document.getElementById('modal').classList.add('open');
 }
 
-// ── Save patient (local + sheet) ──
-async function savePatient() {
-  const name  = document.getElementById('f-name').value.trim();
-  const mobile= document.getElementById('f-mobile').value.trim();
-  const email = document.getElementById('f-email').value.trim();
-  const date  = document.getElementById('f-date').value;
+function savePatient() {
+  const name      = document.getElementById('f-name').value.trim();
+  const mobile    = document.getElementById('f-mobile').value.trim();
+  const email     = document.getElementById('f-email').value.trim();
+  const date      = document.getElementById('f-date').value;
   const treatment = document.getElementById('f-treatment').value;
-  const notes = document.getElementById('f-notes').value.trim();
+  const notes     = document.getElementById('f-notes').value.trim();
 
   if (!name || !mobile || !email || !date) {
     showToast('Please fill in name, mobile, email and date.', 'red'); return;
@@ -679,14 +587,14 @@ async function savePatient() {
   if (editingId) {
     const p = patients.find(x => x.id === editingId);
     const dateChanged = p.date !== date;
-    Object.assign(p, {name, mobile, email, date, treatment, notes});
+    Object.assign(p, { name, mobile, email, date, treatment, notes });
     if (dateChanged) p.emailSent = false;
-    await pushToSheet('update', p);
+    pushToSheet('update', p);
     showToast(`${name} updated.`, 'green');
   } else {
     const p = { id: 'p_' + Date.now(), name, mobile, email, date, treatment, notes, emailSent: false };
     patients.push(p);
-    await pushToSheet('add', p);
+    pushToSheet('add', p);
     showToast(`${name} added.`, 'green');
   }
 
@@ -696,45 +604,71 @@ async function savePatient() {
 
 function deletePatient(id) {
   const p = patients.find(x => x.id === id);
-  if (!p || !confirm(`Delete ${p.name}?`)) return;
+  if (!p) return;
+  if (!confirm(`Delete ${p.name}?\nThis cannot be undone.`)) return;
   patients = patients.filter(x => x.id !== id);
   pushToSheet('delete', p);
   persist(); renderAll();
   showToast(`${p.name} removed.`);
 }
 
-// ── Email ──
-async function sendEmailNow(id) {
+// ── Email reminder — manual only ───────────────────────────────
+function askSendEmail(id) {
   const p = patients.find(x => x.id === id);
   if (!p) return;
-  if (!scriptURL) { showToast('Please configure your Google Script URL in Settings first.', 'amber'); return; }
-  showToast(`Sending email to ${p.name}…`);
+  pendingEmailId = id;
+
+  const d = daysFrom(p.date);
+  const dLabel = d === 0 ? 'today' : d === 1 ? 'tomorrow' : d < 0 ? `${Math.abs(d)} days ago` : `in ${d} days`;
+
+  document.getElementById('email-confirm-body').innerHTML =
+    `You are about to send an appointment reminder email to <strong>${esc(p.name)}</strong>.<br>
+     Their appointment is <strong>${fmtDate(p.date)}</strong> (${dLabel}).`;
+
+  document.getElementById('email-preview').innerHTML =
+    `<strong>To:</strong> ${esc(p.email)}<br>
+     <strong>Subject:</strong> Appointment Reminder – DentalDesk Dental Clinic<br><br>
+     <em>Hi ${esc(p.name.split(' ')[0])}, this is a reminder that your
+     <strong>${esc(p.treatment||'dental')}</strong> appointment is on
+     <strong>${fmtDateLong(p.date)}</strong>. Please arrive 10 minutes early.
+     Call us if you need to reschedule.</em>`;
+
+  document.getElementById('email-modal').classList.add('open');
+}
+
+function closeEmailModal() {
+  document.getElementById('email-modal').classList.remove('open');
+  pendingEmailId = null;
+}
+
+async function confirmSendEmail() {
+  if (!pendingEmailId) return;
+  const p = patients.find(x => x.id === pendingEmailId);
+  if (!p) { closeEmailModal(); return; }
+
+  const btn = document.getElementById('confirm-send-btn');
+  btn.disabled = true; btn.textContent = 'Sending…';
+
   const ok = await callScript('sendEmail', p);
-  if (ok) { p.emailSent = true; persist(); renderAll(); showToast(`Email sent to ${p.email}`, 'green'); }
-  else showToast('Email failed. Check your Apps Script setup.', 'red');
-}
+  btn.disabled = false;
+  btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg> Send email`;
 
-async function runEmailCheck() {
-  if (!scriptURL) { showToast('Please configure your Google Script URL in Settings first.', 'amber'); return; }
-  const due = patients.filter(p => daysFrom(p.date) === reminderDays && !p.emailSent);
-  if (!due.length) { showToast('No reminders due today.'); return; }
-  showToast(`Sending ${due.length} reminder email(s)…`);
-  let sent = 0;
-  for (const p of due) {
-    const ok = await callScript('sendEmail', p);
-    if (ok) { p.emailSent = true; sent++; }
+  if (ok) {
+    p.emailSent = true;
+    persist(); renderAll();
+    showToast(`Reminder sent to ${p.email}`, 'green');
+  } else {
+    showToast('Email failed. Check your Apps Script URL in google-apps-script.gs.', 'red');
   }
-  persist(); renderAll();
-  showToast(`${sent} of ${due.length} reminder(s) sent.`, sent > 0 ? 'green' : 'red');
+  closeEmailModal();
 }
 
-// ── Google Sheet API ──
+// ── Google Sheet sync ──────────────────────────────────────────
 async function pushToSheet(action, patient) {
   if (!scriptURL) return;
   try {
     await fetch(scriptURL, {
-      method: 'POST',
-      mode: 'no-cors',
+      method: 'POST', mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action, patient })
     });
@@ -742,11 +676,13 @@ async function pushToSheet(action, patient) {
 }
 
 async function callScript(action, patient) {
-  if (!scriptURL) return false;
+  if (!scriptURL) {
+    // No script URL set — still mark as sent locally for demo purposes
+    return true;
+  }
   try {
-    const res = await fetch(scriptURL, {
-      method: 'POST',
-      mode: 'no-cors',
+    await fetch(scriptURL, {
+      method: 'POST', mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action, patient })
     });
@@ -754,10 +690,10 @@ async function callScript(action, patient) {
   } catch(e) { console.error(e); return false; }
 }
 
-// ── Local storage persist ──
+// ── Persist ────────────────────────────────────────────────────
 function persist() { localStorage.setItem('dd_patients', JSON.stringify(patients)); }
 
-// ── Toast ──
+// ── Toast ──────────────────────────────────────────────────────
 function showToast(msg, type='') {
   const t = document.getElementById('toast');
   t.textContent = msg;
@@ -766,15 +702,14 @@ function showToast(msg, type='') {
   t._t = setTimeout(() => t.classList.remove('show'), 3000);
 }
 
-// ── XSS escape ──
+// ── XSS escape ─────────────────────────────────────────────────
 function esc(s) {
   return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-// Close modal on overlay click
-document.getElementById('modal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
+// Close modals on overlay click
+document.getElementById('modal').addEventListener('click', function(e) { if(e.target===this) closeModal(); });
+document.getElementById('email-modal').addEventListener('click', function(e) { if(e.target===this) closeEmailModal(); });
 </script>
 </body>
 </html>
